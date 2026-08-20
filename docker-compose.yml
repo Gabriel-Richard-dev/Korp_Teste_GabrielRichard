@@ -1,0 +1,53 @@
+services:
+  estoque:
+    build: ./backend/Estoque
+    environment:
+      ConnectionStrings__Default: Data Source=/dados/estoque.db
+      Ia__BaseUrl: http://ollama:11434
+      Ia__Modelo: llama3.2:1b
+    depends_on:
+      - ollama
+    volumes:
+      - estoque-dados:/dados
+    ports:
+      - "5001:8080"
+
+  ollama:
+    image: ollama/ollama
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+
+  ollama-pull:
+    image: ollama/ollama
+    depends_on:
+      - ollama
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["ollama", "pull", "llama3.2:1b"]
+    restart: on-failure
+
+  faturamento:
+    build: ./backend/Faturamento
+    environment:
+      ConnectionStrings__Default: Data Source=/dados/faturamento.db
+      Estoque__BaseUrl: http://estoque:8080
+    volumes:
+      - faturamento-dados:/dados
+    depends_on:
+      - estoque
+    ports:
+      - "5002:8080"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - faturamento
+
+volumes:
+  ollama:
+  estoque-dados:
+  faturamento-dados:

@@ -1,0 +1,4 @@
+{
+  "/api/estoque": { "target": "http://localhost:5001", "pathRewrite": { "^/api/estoque": "" }, "changeOrigin": true },
+  "/api/faturamento": { "target": "http://localhost:5002", "pathRewrite": { "^/api/faturamento": "" }, "changeOrigin": true }
+}

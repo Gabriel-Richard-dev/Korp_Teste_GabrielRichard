@@ -1,0 +1,37 @@
+header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--p-content-border-color);
+}
+.logo {
+  height: 28px;
+}
+h1 {
+  font-size: 1.15rem;
+  margin: 0;
+  font-weight: 700;
+}
+nav {
+  display: flex;
+  gap: 0.5rem;
+}
+nav a {
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--p-text-muted-color);
+}
+nav a:hover {
+  background: var(--p-content-hover-background);
+}
+nav a.ativo {
+  background: var(--p-primary-color);
+  color: var(--p-primary-contrast-color);
+}
+main {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
