@@ -9,7 +9,6 @@ import { Chat } from './chat';
   template: `
     <p-toast position="top-right" />
     <header>
-      <img src="korp.png" alt="KORP ERP" class="logo" />
       <h1>Notas Fiscais</h1>
       <nav>
         <a routerLink="/produtos" routerLinkActive="ativo"><i class="pi pi-box"></i> Produtos</a>

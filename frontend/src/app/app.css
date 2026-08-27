@@ -5,9 +5,6 @@ header {
   padding: 1rem 2rem;
   border-bottom: 1px solid var(--p-content-border-color);
 }
-.logo {
-  height: 28px;
-}
 h1 {
   font-size: 1.15rem;
   margin: 0;

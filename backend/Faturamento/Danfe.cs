@@ -4,8 +4,6 @@ using QuestPDF.Infrastructure;
 
 public static class Danfe
 {
-    static readonly string LogoPath = Path.Combine(AppContext.BaseDirectory, "korp.png");
-
     public static byte[] Gerar(Nota nota) => Document.Create(doc =>
     {
         doc.Page(page =>
@@ -16,10 +14,7 @@ public static class Danfe
 
             page.Header().Row(row =>
             {
-                if (File.Exists(LogoPath))
-                    row.ConstantItem(4, Unit.Centimetre).AlignMiddle().Image(LogoPath);
-
-                row.RelativeItem().AlignRight().Column(col =>
+                row.RelativeItem().Column(col =>
                 {
                     col.Item().Text("NOTA FISCAL").FontSize(16).Bold();
                     col.Item().Text($"Nº {nota.Numero:D6}").FontSize(12);
