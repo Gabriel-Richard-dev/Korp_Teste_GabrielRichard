@@ -9,15 +9,11 @@ services:
       - ollama
     volumes:
       - estoque-dados:/dados
-    ports:
-      - "5001:8080"
 
   ollama:
     image: ollama/ollama
     volumes:
       - ollama:/root/.ollama
-    ports:
-      - "11434:11434"
 
   ollama-pull:
     image: ollama/ollama
@@ -37,13 +33,11 @@ services:
       - faturamento-dados:/dados
     depends_on:
       - estoque
-    ports:
-      - "5002:8080"
 
   frontend:
     build: ./frontend
     ports:
-      - "4200:80"
+      - "9123:80"
     depends_on:
       - faturamento
 
